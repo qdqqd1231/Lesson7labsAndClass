@@ -7,7 +7,7 @@ namespace lab_lesson7
 {
     internal class Program
     {
-        static void IfisIFormatTable(object obj)
+        static void IFormattable(object obj)
         {
             if (obj is IFormattable)
             {
@@ -18,6 +18,24 @@ namespace lab_lesson7
 
                 Console.WriteLine("Не удалось явно преобразовать к IFormatTable");
             }
+        }
+        public static void SearchMail()
+        {
+            StreamReader sr = new StreamReader("info.txt");
+            int count = 0;
+            string temp;
+            while (sr.ReadLine() != null)
+            {
+                count++;
+            }
+            sr = new StreamReader("info.txt");
+            for (int i = 0; i < count; i++)
+            {
+                string[] info = sr.ReadLine().Replace(" ","").Split('#');
+                temp = info[1];
+                File.AppendAllText("mails.txt", temp+"\n");
+            }
+
         }
         public static char[] Reverse(string a)
         {
@@ -72,11 +90,13 @@ namespace lab_lesson7
             Console.WriteLine("\t\t\t\t\t\t\t\tTask 8.4");
             Console.Write("Введите строку-->\t");
             object obj = Console.ReadLine();
-            IfisIFormatTable(obj);
+            IFormattable(obj);
+            Console.ReadKey();
             Console.Clear();
 
-            Console.WriteLine("\t\t\t\t\t\t\t\tTask 8.5");
+            Console.WriteLine("\t\t\t\t\t\t\t\tHomeTask 8.1");
 
+            SearchMail();
 
         }
     }
