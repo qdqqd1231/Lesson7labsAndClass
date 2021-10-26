@@ -2,10 +2,38 @@
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace lab_lesson7
 {
-    internal class Program
+    class Song
+    {
+        public Song(string name, string author)
+        {
+            this.author = author;
+            this.name = name;
+        }
+        private string name; 
+        private string author;
+        public string Name
+        {
+            get { return name; }
+        }
+        public string Author
+        {
+            get { return author; }
+        }
+        //public string Title()
+        //{
+
+        //}
+        ////метод, который сравнивает между собой два объекта-песни:
+        //public bool  Equals(object d)
+        //{
+        //    return ;
+        //}
+    }
+        internal class Program
     {
         static void IFormattable(object obj)
         {
@@ -97,6 +125,20 @@ namespace lab_lesson7
             Console.WriteLine("\t\t\t\t\t\t\t\tHomeTask 8.1");
 
             SearchMail();
+
+            Console.WriteLine("hometask 8.2");
+            List<Song> songs = new List<Song>();
+            int countSongs = 4;
+            for (int i = 0; i < countSongs; i++)
+            {
+                Console.WriteLine("Введите название песни");
+                string name = Console.ReadLine();
+                Console.WriteLine("Введите название артиста");
+                string author = Console.ReadLine();
+                songs.Add(new Song(name, author));
+            }
+
+
 
         }
     }
