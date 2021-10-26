@@ -30,16 +30,17 @@ namespace lab_lesson7
         {
             Console.WriteLine("task 8.1 in the previous lab");
             Thread.Sleep(150);
-            Console.WriteLine("task 8.2");
+            Console.WriteLine("\t\t\t\t\t\t\t\ttask 8.2");
             Thread.Sleep(150);
-            Console.WriteLine("Введите строку");
+            Console.Write("Введите строку-->\t");
             string str = Console.ReadLine().ToString();
+            Console.Write($"Наоборот-->\t\t");
             Console.WriteLine(Reverse(str));
 
-            Console.WriteLine("task 8.3");
+            Console.WriteLine("\t\t\t\t\t\t\t\ttask 8.3");
             Thread.Sleep(180);
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("введите название-->");
+            Console.Write("введите название-->\t");
             string file = Console.ReadLine() + ".txt";
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
@@ -55,22 +56,26 @@ namespace lab_lesson7
             {
 
                 StreamReader r = new StreamReader(file);
-                file = r.ReadToEnd();
+                file = r.ReadToEnd().ToUpper();
                 File.AppendAllText("finalfile.txt", file);
                 r.Close();
             }
             else
             {
                 Console.BackgroundColor = ConsoleColor.Red;
-                Console.WriteLine("ФАЙЛ НЕ НАЙДЕН");
+                Console.WriteLine("\t\t\t\t\t\t\t\tФАЙЛ НЕ НАЙДЕН");
                 Console.ResetColor();
             }
             Console.ReadKey();
             Console.Clear();
-            Console.WriteLine("Task 8.4");
-            Console.WriteLine("Введите строку");
+
+            Console.WriteLine("\t\t\t\t\t\t\t\tTask 8.4");
+            Console.Write("Введите строку-->\t");
             object obj = Console.ReadLine();
             IfisIFormatTable(obj);
+            Console.Clear();
+
+            Console.WriteLine("\t\t\t\t\t\t\t\tTask 8.5");
 
 
         }
