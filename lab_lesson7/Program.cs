@@ -125,7 +125,6 @@ namespace lab_lesson7
             Console.ForegroundColor = ConsoleColor.White;
             if (File.Exists(file) && !file.Equals("finalfile.txt"))
             {
-
                 StreamReader r = new StreamReader(file);
                 file = r.ReadToEnd().ToUpper();
                 File.AppendAllText("finalfile.txt", file);
@@ -162,7 +161,7 @@ namespace lab_lesson7
                 string author = Console.ReadLine();
                 songs.Add(new Song(name, author));
             }
-
+            Song.SearchEqualsSongs(songs);
 
 
         }
