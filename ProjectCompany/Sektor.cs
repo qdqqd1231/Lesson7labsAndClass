@@ -8,9 +8,10 @@ namespace ProjectCompany
 {
     class Sektor
     {
-        public Sektor(string name)
+        public string sektor;
+        public Sektor(string sektor)
         {
-
+            this.sektor = sektor;
         }
     }
 }

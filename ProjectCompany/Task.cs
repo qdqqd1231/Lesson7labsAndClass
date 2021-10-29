@@ -10,8 +10,7 @@ namespace ProjectCompany
     {
         public Task(string name)
         {
-            this.name = name;
-          
+              this.name = name;
         }
         public string name { get; set; }
         

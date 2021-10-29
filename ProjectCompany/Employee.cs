@@ -54,8 +54,13 @@ namespace ProjectCompany
         {
             if (employeeTo.head.id ==id)
             {
+                if (!(employeeTo.sektor.sektor ==null))
+                {
+                    employeeTo.selfTasks.Add(task);
+                    Console.WriteLine($"имя :  {employeeTo.name} отдел :  {employeeTo.department.department} сектор :  {employeeTo.sektor.sektor}  задача :{employeeTo.selfTasks.Last()}");
+                }
                 employeeTo.selfTasks.Add(task);
-                employeeTo.PrintInfo();
+                Console.WriteLine($"имя :  {employeeTo.name} отдел :  {employeeTo.department.department}.  задача :{employeeTo.selfTasks.Last()}");
             }
             else
             {
@@ -64,10 +69,7 @@ namespace ProjectCompany
             }
 
         }
-        public void PrintInfo()
-        {
-            Console.WriteLine($"имя :  {name} отдел :  {department} сектор :  {sektor}  задача :{selfTasks}");
-        }
+        
         
     }
 }

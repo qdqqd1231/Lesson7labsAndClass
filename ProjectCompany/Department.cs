@@ -8,9 +8,10 @@ namespace ProjectCompany
 {
     class Department
     {
-        public Department(string name)
+        public string department;
+        public Department(string department)
         {
-
+            this.department = department;
         }
     }
 }
