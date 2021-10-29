@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace ProjectCompany
 {
-    class HeadOfDepartment:Employee
+    class HeadOfDepartment : Employee
     {
-        public HeadOfDepartment(string name, string surname, Department department, Employee head) : base(name, surname, department, head)
+        public HeadOfDepartment(string name, Department department, Employee head):base(name,department,head)
         {
 
         }
+
     }
 }

@@ -8,7 +8,7 @@ namespace ProjectCompany
 {
     class HeadEngineer:Employee
     {
-        public HeadEngineer(string name, string surname, Department department, Employee head) : base(name, surname, department, head)
+        public HeadEngineer(string name, Department department, Sektor sektor, Employee head) : base(name, department, sektor, head)
         {
 
         }

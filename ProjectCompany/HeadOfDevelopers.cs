@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProjectCompany
 {
-    class Department
+    class HeadOfDevelopers:Employee
     {
-        public Department(string name)
+        public HeadOfDevelopers(string name, Department department, Sektor sektor, Employee head) : base(name, department, sektor, head)
         {
 
         }

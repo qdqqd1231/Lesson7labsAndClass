@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProjectCompany
 {
-    class Department
+    class Sektor
     {
-        public Department(string name)
+        public Sektor(string name)
         {
 
         }
