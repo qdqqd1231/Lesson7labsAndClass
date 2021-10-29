@@ -8,7 +8,7 @@ namespace ProjectCompany
 {
     class BossAssistant: Employee
     {
-        public BossAssistant(string name, Employee head):base(name,head)
+        public BossAssistant(string name,Department department, Employee head):base(name,department,head)
         {
 
         }

@@ -55,13 +55,19 @@ namespace ProjectCompany
             if (employeeTo.head.id ==id)
             {
                 employeeTo.selfTasks.Add(task);
+                employeeTo.PrintInfo();
             }
             else
             {
                 Console.WriteLine("нельзя назначить задачу");
+                
             }
 
         }
-
+        public void PrintInfo()
+        {
+            Console.WriteLine($"имя :  {name} отдел :  {department} сектор :  {sektor}  задача :{selfTasks}");
+        }
+        
     }
 }
