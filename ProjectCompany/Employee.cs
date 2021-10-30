@@ -52,22 +52,32 @@ namespace ProjectCompany
 
         public void GiveTask(Employee employeeTo, Task task)
         {
-            if (employeeTo.head.id ==id)
+            if (!(employeeTo.head == null))
             {
-                if (!(employeeTo.sektor.sektor ==null))
+
+
+                if (employeeTo.head.id == id)
                 {
+                    if (!(employeeTo.sektor.sektor == null))
+                    {
+                        employeeTo.selfTasks.Add(task);
+                        Console.WriteLine($"имя :  {employeeTo.name} отдел :  {employeeTo.department.department} сектор :  {employeeTo.sektor.sektor}  задача :{employeeTo.selfTasks.Last().name}");
+                    }
                     employeeTo.selfTasks.Add(task);
-                    Console.WriteLine($"имя :  {employeeTo.name} отдел :  {employeeTo.department.department} сектор :  {employeeTo.sektor.sektor}  задача :{employeeTo.selfTasks.Last()}");
+                    
                 }
-                employeeTo.selfTasks.Add(task);
-                Console.WriteLine($"имя :  {employeeTo.name} отдел :  {employeeTo.department.department}.  задача :{employeeTo.selfTasks.Last()}");
+            
+                else
+                {
+                    Console.WriteLine("нельзя назначить задачу");
+
+                }
             }
             else
             {
                 Console.WriteLine("нельзя назначить задачу");
-                
-            }
 
+            }
         }
         
         
