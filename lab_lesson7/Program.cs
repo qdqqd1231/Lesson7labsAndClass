@@ -108,7 +108,11 @@ namespace lab_lesson7
                 string name = Console.ReadLine();
                 Console.WriteLine("Введите название артиста");
                 string author = Console.ReadLine();
-                songs.Add(new Song(name, author,songs[i]));
+                if (i!=0)
+                {
+                    songs.Add(new Song(name, author, songs[i - 1]));
+                }
+                songs.Add(new Song(name, author));
             }
             Song.SearchEqualsSongs(songs);
 

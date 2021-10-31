@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 
 namespace Bank
@@ -13,7 +14,7 @@ namespace Bank
 
     public class Account
     {
-        private static Queue<BankTransaction> transactions = new Queue<BankTransaction>();
+        private Queue<BankTransaction> transactions = new Queue<BankTransaction>();
         private Guid id;
         private decimal valueOfMoney;
         private BankAccountType type;
@@ -23,24 +24,33 @@ namespace Bank
             set { valueOfMoney = value; }
         }
 
-        public static void ShowTransactions()
+        public static void Dispose(Account account)
         {
-            foreach (var transaction in transactions)
+            for (int i = 0; i < account.transactions.Count; i++)
             {
-                Console.WriteLine($"В {DateTime.Now} было переведено {transaction.value} долларов!");
+                string info = GetInfoAboutTransaction(account.transactions.Dequeue());
+
+                File.AppendAllText("transaction.txt", info + "\n");
+
             }
+            GC.SuppressFinalize(account);
+        }
+        
+        public static string GetInfoAboutTransaction(BankTransaction bankTrans)
+        {
+            return $" Время выполнения операции {bankTrans.dateTime}; сумма перевода {bankTrans.value} ; тип операции {bankTrans.typeTransaction}";
         }
         public void DepositMoney(decimal depositValue)
         {
             valueOfMoney += depositValue;
-            transactions.Enqueue(new BankTransaction(depositValue));
+            transactions.Enqueue(new BankTransaction(depositValue,BankTransaction.TypeTransaction.Deposit));
         }
         public void WithdrawMoney(decimal withdrawValue)
         {
             if (withdrawValue <= valueOfMoney)
             {
                 valueOfMoney -= withdrawValue;
-                transactions.Enqueue(new BankTransaction(withdrawValue));
+                transactions.Enqueue(new BankTransaction(withdrawValue, BankTransaction.TypeTransaction.Withdraw));
             }
             else
             {
@@ -55,7 +65,7 @@ namespace Bank
             {
                 this.valueOfMoney -= transfer;
                 acc.Money += transfer;
-                transactions.Enqueue(new BankTransaction(transfer));
+                transactions.Enqueue(new BankTransaction(transfer, BankTransaction.TypeTransaction.Transfer));
 
             }
             else
@@ -75,11 +85,11 @@ namespace Bank
             valueOfMoney = newValue;
             if (type.Equals("saving"))
             {
-                type = BankAccountType.saving;
+                this.type = BankAccountType.saving;
             }
             else
             {
-                type = BankAccountType.corrent;
+                this.type = BankAccountType.corrent;
             }
 
         }
@@ -89,11 +99,11 @@ namespace Bank
             id = Guid.NewGuid();
             if (type.Equals("saving"))
             {
-                type = BankAccountType.saving;
+                this.type = BankAccountType.saving;
             }
             else
             {
-                type = BankAccountType.corrent;
+                this.type = BankAccountType.corrent;
             }
 
         }

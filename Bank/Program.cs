@@ -29,31 +29,17 @@ namespace Bank
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("select action :<show bank transactions> <show correct> or <show saving> <deposit> or <withdraw> money, <transfer> or <exit> to exit the program : ");
+                Console.WriteLine("select action :<show correct> or <show saving> <deposit> or <withdraw> money, <transfer> or <exit> to exit the program : ");
                 string type = Console.ReadLine().ToLower();
                 if (type.Equals("exit"))
                 {
                     flag = false;
                 }
-                else if (type.Equals("show bank transactions"))
-                {
-                    Account.ShowTransactions();
-                    //Console.WriteLine("corrent or saving?");
-                    //string str = Console.ReadLine();
-                    //if (str.Equals("corrent"))
-                    //{
-                       
-                    //}
-                    //else if (str.Equals("saving"))
-                    //{
-
-                    //}
-                }
                 else if (type.Equals("transfer"))
                 {
                     Console.WriteLine("from corrent or saving?");
                     string str = Console.ReadLine();
-                    if (Equals(str, "save"))
+                    if (Equals(str, "saving"))
                     {
                         Console.WriteLine("How much?");
                         decimal transfer;
@@ -131,8 +117,11 @@ namespace Bank
                         corrent.WithdrawMoney(money);
                     }
                 }
+                Account.Dispose(save);
+                Account.Dispose(corrent);
 
             }
+            
             Console.Clear();
 
         }

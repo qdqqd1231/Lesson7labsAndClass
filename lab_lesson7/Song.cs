@@ -12,6 +12,11 @@ namespace lab_lesson7
         {
 
         }
+        public Song(string name, string author)
+        {
+            this.author = author;
+            this.name = name;
+        }
         public Song(string name, string author, Song song)
         {
             this.author = author;

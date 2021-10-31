@@ -7,18 +7,26 @@ using System.Threading.Tasks;
 
 namespace Bank
 {
-    class BankTransaction
+    public class BankTransaction
     {
-        public decimal value { get; private set; }
+        public readonly decimal value;
+        public readonly DateTime dateTime = new DateTime();
+        public readonly TypeTransaction typeTransaction;
+        public enum TypeTransaction
+        {
+            Withdraw,
+            Deposit,
+            Transfer
+        }
         public BankTransaction()
         {
 
         }
-        public BankTransaction(decimal value)
+        public BankTransaction(decimal value, TypeTransaction typeTransaction)
         {
             this.value = value;
-            Console.WriteLine($"В {DateTime.Now} было переведено {value} долларов!");
-
+            dateTime = DateTime.Now;
+            this.typeTransaction = typeTransaction;
         }
     }
 }
